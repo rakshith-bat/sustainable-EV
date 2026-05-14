@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>EV Charge India</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+</head>
+
+<body>
+
+  <div class="header">
+    <div class="flag-stripe-saffron"></div>
+    <div class="flag-stripe-white"></div>
+    <div class="flag-stripe-green"></div>
+
+    <div class="header-body">
+      <svg class="chakra-icon" viewBox="0 0 36 36">
+        <circle cx="18" cy="18" r="16" stroke="#FFFFFF" stroke-width="1.5" fill="none"/>
+        <circle cx="18" cy="18" r="3" fill="#FFFFFF"/>
+      </svg>
+
+      <div>
+        <div class="header-title">EV Charge India</div>
+        <div class="header-sub">
+          Sustainable · Smart · Swachh
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-tabs">
+
+      <button class="nav-tab active" data-tab="calculator">
+        <i class="ti ti-bolt"></i>
+        Calculate
+      </button>
+
+      <button class="nav-tab" data-tab="stations">
+        <i class="ti ti-map-pin"></i>
+        Stations
+      </button>
+
+      <button class="nav-tab" data-tab="compare">
+        <i class="ti ti-chart-bar"></i>
+        Compare
+      </button>
+
+    </div>
+  </div>
+
+
+  <div class="content">
+
+    <!-- CALCULATOR -->
+    <section class="tab-panel active" id="tab-calculator">
+
+      <div class="section-label">
+        <i class="ti ti-battery-charging"></i>
+        Battery Info
+      </div>
+
+      <div class="input-card">
+
+        <div class="form-row">
+          <span class="form-label">Battery (kWh)</span>
+          <input class="form-input" type="number" id="battery" value="40">
+        </div>
+
+        <div class="form-row">
+          <span class="form-label">Current SOC</span>
+          <input class="form-input" type="number" id="currentSoc" value="20">
+        </div>
+
+        <div class="form-row">
+          <span class="form-label">Target SOC</span>
+          <input class="form-input" type="number" id="targetSoc" value="80">
+        </div>
+
+      </div>
+
+
+      <div class="section-label">
+        <i class="ti ti-solar-panel"></i>
+        Energy Source
+      </div>
+
+      <div class="input-card">
+
+        <div class="source-grid">
+
+          <button class="source-btn selected" data-source="grid">
+            <i class="ti ti-plug"></i>
+            <span>Grid</span>
+          </button>
+
+          <button class="source-btn" data-source="solar">
+            <i class="ti ti-sun"></i>
+            <span>Solar</span>
+          </button>
+
+          <button class="source-btn" data-source="wind">
+            <i class="ti ti-wind"></i>
+            <span>Wind</span>
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="section-label">
+        <i class="ti ti-map"></i>
+        Location
+      </div>
+
+      <div class="input-card">
+
+        <div class="form-row">
+          <span class="form-label">City / Area</span>
+
+          <input class="form-input"
+            type="text"
+            id="location"
+            value="Hosur, Tamil Nadu">
+        </div>
+
+      </div>
+
+      <button class="cta-btn" id="calculateBtn">
+        <i class="ti ti-calculator"></i>
+        Calculate Charging Plan
+      </button>
+
+
+      <div id="results-section">
+
+        <div class="section-label">
+          <i class="ti ti-report"></i>
+          Results
+        </div>
+
+        <div class="metrics-grid">
+
+          <div class="metric-card energy">
+            <div class="metric-icon">
+              <i class="ti ti-bolt"></i>
+            </div>
+
+            <div class="metric-val" id="energyResult">
+              0 kWh
+            </div>
+
+            <div class="metric-label">
+              Energy Required
+            </div>
+          </div>
+
+
+          <div class="metric-card cost">
+            <div class="metric-icon">
+              <i class="ti ti-currency-rupee"></i>
+            </div>
+
+            <div class="metric-val" id="costResult">
+              ₹0
+            </div>
+
+            <div class="metric-label">
+              Estimated Cost
+            </div>
+          </div>
+
+
+          <div class="metric-card emission">
+            <div class="metric-icon">
+              <i class="ti ti-cloud"></i>
+            </div>
+
+            <div class="metric-val" id="emissionResult">
+              0 kg
+            </div>
+
+            <div class="metric-label">
+              CO₂ Emission
+            </div>
+          </div>
+
+
+          <div class="metric-card saving">
+            <div class="metric-icon">
+              <i class="ti ti-leaf"></i>
+            </div>
+
+            <div class="metric-val" id="savingResult">
+              0%
+            </div>
+
+            <div class="metric-label">
+              Petrol Savings
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- STATIONS -->
+    <section class="tab-panel" id="tab-stations">
+
+      <div class="map-placeholder">
+
+        <div class="map-grid"></div>
+
+        <div class="map-label">
+          Prototype EV Station Map
+        </div>
+
+      </div>
+
+      <div class="section-label">
+        <i class="ti ti-list"></i>
+        Nearby Stations
+      </div>
+
+      <div id="stationsContainer">
+
+        <div class="station-card">
+          <div class="station-dot fast">
+            <i class="ti ti-bolt"></i>
+          </div>
+
+          <div>
+            <div class="station-name">
+              Prototype Fast Charger
+            </div>
+
+            <div class="station-meta">
+              Simulated Data · 1.2 km
+            </div>
+          </div>
+
+          <span class="station-badge badge-fast">
+            FAST
+          </span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- COMPARE -->
+    <section class="tab-panel" id="tab-compare">
+
+      <div class="section-label">
+        <i class="ti ti-chart-bar"></i>
+        Emission Comparison
+      </div>
+
+      <div class="input-card">
+
+        <div class="emission-bar-row">
+          <span class="bar-label">Petrol</span>
+
+          <div class="bar-track">
+            <div class="bar-fill petrol"></div>
+          </div>
+
+          <span class="bar-val">19.2</span>
+        </div>
+
+
+        <div class="emission-bar-row">
+          <span class="bar-label">EV Grid</span>
+
+          <div class="bar-track">
+            <div class="bar-fill grid"></div>
+          </div>
+
+          <span class="bar-val">8.1</span>
+        </div>
+
+
+        <div class="emission-bar-row">
+          <span class="bar-label">EV Solar</span>
+
+          <div class="bar-track">
+            <div class="bar-fill solar"></div>
+          </div>
+
+          <span class="bar-val">0.7</span>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
