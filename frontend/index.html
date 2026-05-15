@@ -173,7 +173,7 @@
             type="text"
             id="location"
             placeholder="Enter city"
-            value="Hosur, Tamil Nadu">
+            value="Bangalore, Karnataka">
 
           <datalist id="citySuggestions">
 
@@ -312,7 +312,7 @@
           <div>
 
             <div class="station-name">
-              Hosur Fast Charging Station
+              Bangalore Fast Charging Station
             </div>
 
             <div class="station-meta">
@@ -392,39 +392,37 @@
 
 
   <!-- GOOGLE MAP -->
-   <script>
 
-function initMap() {
+<!-- LEAFLET CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet/dist/leaflet.css"
+/>
 
-  const hosur = {
-    lat: 12.7409,
-    lng: 77.8253
-  };
+<!-- LEAFLET JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-  const mapDiv = document.getElementById("map");
+<!-- MAP SCRIPT -->
+<script>
 
-  if (!mapDiv) return;
+document.addEventListener("DOMContentLoaded", () => {
 
-  const map = new google.maps.Map(mapDiv, {
-    zoom: 11,
-    center: hosur
-  });
+  const map = L.map('map').setView([12.9716, 77.5946], 11);
 
-  new google.maps.Marker({
-    position: hosur,
-    map,
-    title: "EV Charging Station"
-  });
+  L.tileLayer(
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {
+      attribution: '&copy; OpenStreetMap contributors'
+    }
+  ).addTo(map);
 
-}
+  L.marker([12.9716, 77.5946])
+    .addTo(map)
+    .bindPopup("Bangalore EV Charging Station")
+    .openPopup();
 
-window.initMap = initMap;
+});
 
-</script>
-
-
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao&libraries=places&callback=initMap">
 </script>
 
 </body>

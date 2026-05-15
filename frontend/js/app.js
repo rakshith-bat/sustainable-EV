@@ -1,9 +1,9 @@
 let selectedSource = "grid";
 
 const emissionFactors = {
-  grid: 0.82,
-  solar: 0.017,
-  wind: 0.023
+  grid: 0.7,
+  solar: 0.05,
+  wind: 0.02
 };
 
 const costPerKwh = {
