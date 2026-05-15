@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,9 +10,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="./css/styles.css">
 
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
@@ -19,25 +22,31 @@
 
 <body>
 
+  <!-- HEADER -->
   <div class="header">
+
     <div class="flag-stripe-saffron"></div>
     <div class="flag-stripe-white"></div>
     <div class="flag-stripe-green"></div>
 
     <div class="header-body">
+
       <svg class="chakra-icon" viewBox="0 0 36 36">
-        <circle cx="18" cy="18" r="16" stroke="#FFFFFF" stroke-width="1.5" fill="none"/>
-        <circle cx="18" cy="18" r="3" fill="#FFFFFF"/>
+        <circle cx="18" cy="18" r="16" stroke="#FFFFFF" stroke-width="1.5" fill="none" />
+        <circle cx="18" cy="18" r="3" fill="#FFFFFF" />
       </svg>
 
       <div>
         <div class="header-title">EV Charge India</div>
+
         <div class="header-sub">
           Sustainable · Smart · Swachh
         </div>
       </div>
+
     </div>
 
+    <!-- NAV -->
     <div class="nav-tabs">
 
       <button class="nav-tab active" data-tab="calculator">
@@ -56,12 +65,14 @@
       </button>
 
     </div>
+
   </div>
 
 
+  <!-- MAIN CONTENT -->
   <div class="content">
 
-    <!-- CALCULATOR -->
+    <!-- CALCULATOR TAB -->
     <section class="tab-panel active" id="tab-calculator">
 
       <div class="section-label">
@@ -73,22 +84,35 @@
 
         <div class="form-row">
           <span class="form-label">Battery (kWh)</span>
-          <input class="form-input" type="number" id="battery" value="40">
+
+          <input class="form-input"
+            type="number"
+            id="battery"
+            value="40">
         </div>
 
         <div class="form-row">
           <span class="form-label">Current SOC</span>
-          <input class="form-input" type="number" id="currentSoc" value="20">
+
+          <input class="form-input"
+            type="number"
+            id="currentSoc"
+            value="20">
         </div>
 
         <div class="form-row">
           <span class="form-label">Target SOC</span>
-          <input class="form-input" type="number" id="targetSoc" value="80">
+
+          <input class="form-input"
+            type="number"
+            id="targetSoc"
+            value="80">
         </div>
 
       </div>
 
 
+      <!-- ENERGY SOURCE -->
       <div class="section-label">
         <i class="ti ti-solar-panel"></i>
         Energy Source
@@ -118,6 +142,7 @@
       </div>
 
 
+      <!-- LOCATION -->
       <div class="section-label">
         <i class="ti ti-map"></i>
         Location
@@ -126,22 +151,45 @@
       <div class="input-card">
 
         <div class="form-row">
+
           <span class="form-label">City / Area</span>
 
+          <!-- AUTOCOMPLETE -->
           <input class="form-input"
+            list="citySuggestions"
             type="text"
             id="location"
+            placeholder="Enter city"
             value="Hosur, Tamil Nadu">
+
+          <datalist id="citySuggestions">
+
+            <option value="Bangalore"></option>
+            <option value="Bengaluru"></option>
+            <option value="Banganapalle"></option>
+            <option value="Chennai"></option>
+            <option value="Mumbai"></option>
+            <option value="Delhi"></option>
+            <option value="Hyderabad"></option>
+            <option value="Mysore"></option>
+            <option value="Pune"></option>
+            <option value="Kochi"></option>
+
+          </datalist>
+
         </div>
 
       </div>
 
+
+      <!-- BUTTON -->
       <button class="cta-btn" id="calculateBtn">
         <i class="ti ti-calculator"></i>
         Calculate Charging Plan
       </button>
 
 
+      <!-- RESULTS -->
       <div id="results-section">
 
         <div class="section-label">
@@ -152,6 +200,7 @@
         <div class="metrics-grid">
 
           <div class="metric-card energy">
+
             <div class="metric-icon">
               <i class="ti ti-bolt"></i>
             </div>
@@ -163,10 +212,12 @@
             <div class="metric-label">
               Energy Required
             </div>
+
           </div>
 
 
           <div class="metric-card cost">
+
             <div class="metric-icon">
               <i class="ti ti-currency-rupee"></i>
             </div>
@@ -178,10 +229,12 @@
             <div class="metric-label">
               Estimated Cost
             </div>
+
           </div>
 
 
           <div class="metric-card emission">
+
             <div class="metric-icon">
               <i class="ti ti-cloud"></i>
             </div>
@@ -193,10 +246,12 @@
             <div class="metric-label">
               CO₂ Emission
             </div>
+
           </div>
 
 
           <div class="metric-card saving">
+
             <div class="metric-icon">
               <i class="ti ti-leaf"></i>
             </div>
@@ -208,6 +263,7 @@
             <div class="metric-label">
               Petrol Savings
             </div>
+
           </div>
 
         </div>
@@ -217,18 +273,17 @@
     </section>
 
 
-    <!-- STATIONS -->
+    <!-- STATIONS TAB -->
     <section class="tab-panel" id="tab-stations">
 
-      <div class="map-placeholder">
-
-        <div class="map-grid"></div>
-
-        <div class="map-label">
-          Prototype EV Station Map
-        </div>
-
+      <div class="section-label">
+        <i class="ti ti-map-2"></i>
+        EV Charging Map
       </div>
+
+      <!-- GOOGLE MAP -->
+      <div id="map"></div>
+
 
       <div class="section-label">
         <i class="ti ti-list"></i>
@@ -238,23 +293,27 @@
       <div id="stationsContainer">
 
         <div class="station-card">
+
           <div class="station-dot fast">
             <i class="ti ti-bolt"></i>
           </div>
 
           <div>
+
             <div class="station-name">
-              Prototype Fast Charger
+              Hosur Fast Charging Station
             </div>
 
             <div class="station-meta">
-              Simulated Data · 1.2 km
+              1.2 km · Open 24x7
             </div>
+
           </div>
 
           <span class="station-badge badge-fast">
             FAST
           </span>
+
         </div>
 
       </div>
@@ -262,7 +321,7 @@
     </section>
 
 
-    <!-- COMPARE -->
+    <!-- COMPARE TAB -->
     <section class="tab-panel" id="tab-compare">
 
       <div class="section-label">
@@ -273,6 +332,7 @@
       <div class="input-card">
 
         <div class="emission-bar-row">
+
           <span class="bar-label">Petrol</span>
 
           <div class="bar-track">
@@ -280,10 +340,12 @@
           </div>
 
           <span class="bar-val">19.2</span>
+
         </div>
 
 
         <div class="emission-bar-row">
+
           <span class="bar-label">EV Grid</span>
 
           <div class="bar-track">
@@ -291,10 +353,12 @@
           </div>
 
           <span class="bar-val">8.1</span>
+
         </div>
 
 
         <div class="emission-bar-row">
+
           <span class="bar-label">EV Solar</span>
 
           <div class="bar-track">
@@ -302,6 +366,7 @@
           </div>
 
           <span class="bar-val">0.7</span>
+
         </div>
 
       </div>
@@ -310,6 +375,45 @@
 
   </div>
 
-  <script src="js/app.js"></script>
+
+  <!-- MAP SCRIPT -->
+  <script>
+
+    function initMap() {
+
+      const hosur = {
+        lat: 12.7409,
+        lng: 77.8253
+      };
+
+      const map = new google.maps.Map(
+        document.getElementById("map"),
+        {
+          zoom: 11,
+          center: hosur,
+        }
+      );
+
+      new google.maps.Marker({
+        position: hosur,
+        map: map,
+        title: "EV Charging Station"
+      });
+
+    }
+
+  </script>
+
+
+  <!-- GOOGLE MAPS API -->
+  <!-- REPLACE YOUR_API_KEY WITH REAL API KEY -->
+  <script async
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao&libraries=places&callback=initMap">
+</script>
+
+  <!-- APP JS -->
+  <script src="./js/app.js"></script>
+
 </body>
+
 </html>
