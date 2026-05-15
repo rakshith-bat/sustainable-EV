@@ -578,3 +578,10 @@ body {
 
   box-shadow: 0 10px 28px rgba(0,0,0,0.15);
 }
+#map {
+  width: 100%;
+  height: 350px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  border: 2px solid var(--saffron);
+}

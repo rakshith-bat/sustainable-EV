@@ -5,31 +5,12 @@ const emissionFactors = {
   solar: 0.017,
   wind: 0.023
 };
-async function loadSensorData() {
 
-  const data = await getLatestSensorData();
-
-  if (!data) return;
-
-  document.getElementById("battery").value =
-    data.battery;
-
-  document.getElementById("currentSoc").value =
-    data.currentSoc;
-
-  document.getElementById("targetSoc").value =
-    data.targetSoc;
-
-}
-
-loadSensorData();
 const costPerKwh = {
   grid: 8,
   solar: 3,
   wind: 4.25
 };
-
-
 const tabs = document.querySelectorAll(".nav-tab");
 
 tabs.forEach(tab => {

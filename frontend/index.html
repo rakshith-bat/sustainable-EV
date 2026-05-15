@@ -7,6 +7,8 @@
 
   <title>EV Charge India</title>
 
+  <link rel="icon" href="data:,">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -18,6 +20,18 @@
 
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+
+  <style>
+    #map {
+      width: 100%;
+      height: 400px;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 2px solid #e5e5e5;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -154,7 +168,6 @@
 
           <span class="form-label">City / Area</span>
 
-          <!-- AUTOCOMPLETE -->
           <input class="form-input"
             list="citySuggestions"
             type="text"
@@ -281,9 +294,7 @@
         EV Charging Map
       </div>
 
-      <!-- GOOGLE MAP -->
       <div id="map"></div>
-
 
       <div class="section-label">
         <i class="ti ti-list"></i>
@@ -376,43 +387,45 @@
   </div>
 
 
-  <!-- MAP SCRIPT -->
-  <script>
-
-    function initMap() {
-
-      const hosur = {
-        lat: 12.7409,
-        lng: 77.8253
-      };
-
-      const map = new google.maps.Map(
-        document.getElementById("map"),
-        {
-          zoom: 11,
-          center: hosur,
-        }
-      );
-
-      new google.maps.Marker({
-        position: hosur,
-        map: map,
-        title: "EV Charging Station"
-      });
-
-    }
-
-  </script>
-
-
-  <!-- GOOGLE MAPS API -->
-  <!-- REPLACE YOUR_API_KEY WITH REAL API KEY -->
-  <script async
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao&libraries=places&callback=initMap">
-</script>
-
   <!-- APP JS -->
   <script src="./js/app.js"></script>
+
+
+  <!-- GOOGLE MAP -->
+   <script>
+
+function initMap() {
+
+  const hosur = {
+    lat: 12.7409,
+    lng: 77.8253
+  };
+
+  const mapDiv = document.getElementById("map");
+
+  if (!mapDiv) return;
+
+  const map = new google.maps.Map(mapDiv, {
+    zoom: 11,
+    center: hosur
+  });
+
+  new google.maps.Marker({
+    position: hosur,
+    map,
+    title: "EV Charging Station"
+  });
+
+}
+
+window.initMap = initMap;
+
+</script>
+
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao&libraries=places&callback=initMap">
+</script>
 
 </body>
 
