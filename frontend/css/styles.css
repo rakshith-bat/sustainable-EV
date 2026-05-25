@@ -393,7 +393,110 @@ body {
   align-items: center;
   justify-content: center;
 }
+#mapContainer {
 
+  transform: translateZ(0);
+
+  will-change: transform;
+
+  contain: content;
+
+}
+.live-indicator {
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin-top:12px;
+
+  color:#00ff88;
+  font-weight:600;
+
+}
+
+.pulse {
+
+  width:10px;
+  height:10px;
+
+  border-radius:50%;
+
+  background:#00ff88;
+
+  animation:pulseAnim 1s infinite;
+
+}
+
+@keyframes pulseAnim {
+
+  0% {
+    opacity:1;
+    transform:scale(1);
+  }
+
+  100% {
+    opacity:0;
+    transform:scale(2.5);
+  }
+
+}
+.live-indicator {
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin-top:12px;
+
+  color:#00ff88;
+  font-weight:600;
+
+}
+
+.pulse {
+
+  width:10px;
+  height:10px;
+
+  border-radius:50%;
+
+  background:#00ff88;
+
+  animation:pulseAnim 1s infinite;
+
+}
+
+@keyframes pulseAnim {
+
+  0% {
+    opacity:1;
+    transform:scale(1);
+  }
+
+  100% {
+    opacity:0;
+    transform:scale(2.5);
+  }
+
+}
+
+.metrics-grid {
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(140px, 1fr));
+
+  gap:12px;
+
+}
+
+iframe {
+
+  max-width:100%;
+
+}
 .map-grid {
   position: absolute;
   inset: 0;
@@ -584,6 +687,30 @@ body {
   border-radius: 16px;
   margin-bottom: 20px;
   border: 2px solid var(--saffron);
+}
+.metric-card {
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 0 10px rgba(0,255,136,0.08),
+    0 0 30px rgba(0,255,136,0.04);
+
+  transition: 0.3s ease;
+
+}
+
+.metric-card:hover {
+
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 0 15px rgba(0,255,136,0.2),
+    0 0 40px rgba(0,255,136,0.08);
+
 }
 <link
 rel="stylesheet"
