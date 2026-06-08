@@ -294,25 +294,24 @@
 <div class="metrics-grid">
 
   <div class="metric-card">
-    <div class="metric-val" id="tempSensor">32°C</div>
-    <div class="metric-label">Battery Temp</div>
-  </div>
+    <div class="metric-val" id="socSensor">--%</div>
+    <div class="metric-label">State of Charge</div>
+</div>
 
-  <div class="metric-card">
-    <div class="metric-val" id="voltageSensor">392V</div>
+<div class="metric-card">
+    <div class="metric-val" id="voltageSensor">--V</div>
     <div class="metric-label">Voltage</div>
-  </div>
+</div>
 
-  <div class="metric-card">
-    <div class="metric-val" id="speedSensor">42 km/h</div>
-    <div class="metric-label">Vehicle Speed</div>
-  </div>
+<div class="metric-card">
+    <div class="metric-val" id="currentSensor">--A</div>
+    <div class="metric-label">Current</div>
+</div>
 
-  <div class="metric-card">
-    <div class="metric-val" id="healthSensor">97%</div>
-    <div class="metric-label">Battery Health</div>
-  </div>
-
+<div class="metric-card">
+    <div class="metric-val" id="sohSensor">--%</div>
+    <div class="metric-label">Battery Health (SOH)</div>
+</div>
 </div>
       </div>
 
@@ -554,27 +553,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // LIVE SENSOR MOCK
   // -------------------------
 
-  function updateSensors() {
+  async function updateSensors() {
+    try {
+        const res = await fetch("/api/data");
+        const d = await res.json();
 
-    document.getElementById("tempSensor")
-      .innerText =
-      `${30 + Math.floor(Math.random()*8)}°C`;
+        document.getElementById("socSensor").innerText = d.soc.toFixed(1) + "%";
+        document.getElementById("voltageSensor").innerText = d.voltage.toFixed(1) + "V";
+        document.getElementById("currentSensor").innerText = d.current.toFixed(2) + "A";
+        document.getElementById("sohSensor").innerText = d.soh.toFixed(1) + "%";
+    } catch(err) {
+        console.log("Sensor fetch failed:", err);
+    }
+}
 
-    document.getElementById("voltageSensor")
-      .innerText =
-      `${380 + Math.floor(Math.random()*20)}V`;
+setInterval(updateSensors, 2000);
 
-    document.getElementById("speedSensor")
-      .innerText =
-      `${20 + Math.floor(Math.random()*60)} km/h`;
-
-    document.getElementById("healthSensor")
-      .innerText =
-      `${90 + Math.floor(Math.random()*10)}%`;
-
-  }
-
-  setInterval(updateSensors, 2000);
 
   // -------------------------
   // REALTIME MAP
